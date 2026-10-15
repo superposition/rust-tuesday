@@ -1,0 +1,2 @@
+PASS: 225 CLI cases agree (exit code, stdout, stderr presence).
+This is finite behavioral evidence, not proof of identical source or all inputs.

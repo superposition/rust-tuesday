@@ -36,7 +36,8 @@ is not an outcome promised by this workshop.
 Public materials: [github.com/superposition/rust-tuesday](https://github.com/superposition/rust-tuesday)
 
 Prepared 15 October 2026. Duration and public repository confirmed; event date TBD.
-This guide is ready to rehearse. Native REA provider execution is still pending.
+Native REA analysis and a behavioral reconstruction have been exercised on macOS
+ARM64. A live learner rehearsal remains. See the captured results on page 13.
 
 <!-- page -->
 
@@ -80,10 +81,10 @@ For this guide, use macOS or Linux; Windows users can use a rehearsed WSL setup.
 
 **Go/no-go for the native segment**
 
-A provider health check is necessary but insufficient. The facilitator must have
-opened this binary, obtained a relevant function, and saved evidence. This repo
-does not yet contain that provider capture. If rehearsal fails, announce a changed
-agenda or use the basic binary tools on page 9; do not call that a completed REA lab.
+A provider health check is necessary but insufficient. This repo now includes
+real function captures and annotated excerpts in `docs/evidence/`. On the actual
+event machine, retrieve a relevant function again before teaching. Use the saved
+evidence for the matching binary hash if the live provider fails.
 
 <!-- page -->
 
@@ -325,9 +326,10 @@ nm artifacts/challenge/pair-finder > /tmp/challenge-symbols.txt
 strings artifacts/challenge/pair-finder > /tmp/challenge-strings.txt
 ```
 
-`nm` may report no symbols or retain some dynamic names. Rust runtime and library
-code will dominate much of the output. Look for your program's behavior, not a
-one-to-one translation of every source line.
+In the recorded Mac build, `nm` showed no local symbols, but the export trie
+still contained `BruteForce` and `HashLookup` name fragments. Ghidra recovered
+those names. This challenge is not anonymous. Rust runtime code also dominates
+much of the output; find the behavior you want to explain.
 
 **Handoff rule**
 
@@ -377,15 +379,16 @@ Run `rea analyze` on this workshop's warmup binary, then retrieve a relevant
 function. Save the output and any warnings. Do not treat a provider listing or a
 successful exit as proof that the relevant algorithm was recovered.
 
-**Current rehearsal status**
+**Verified local route**
 
-The authoring machine has Rust 1.90.0 and Node 22.14.0. That Node version is below
-the REA baseline. No REA CLI or Ghidra/Hopper installation was found in the checked
-locations. Native analysis was not run. The preparation task is to install or use
-a suitable prepared machine and capture the actual session before teaching.
+The rehearsal used Node 24.12.0, JDK 21.0.9 and Ghidra 12.1.4 on macOS 26.6.2
+ARM64. The missing native decompiler was built from the checksum-verified release.
+The scoped doctor passed and native queries returned actual pseudocode.
 
-The commands on the next page were checked against upstream documentation;
-provider-specific output and timing remain unverified locally.
+On the prepared checkout, use `bash scripts/rea.sh` wherever this guide says `rea`.
+It uses project-local dependencies without changing default Node/Java versions.
+For a new checkout, follow `docs/LOCAL-TOOLS.md`. No agent registration is needed
+for this CLI route. The next page's commands were exercised in this rehearsal.
 
 <!-- page -->
 
@@ -428,7 +431,7 @@ flow. Do not invent a function boundary or describe a guess as recovered Rust.
 
 **Fallback when the provider fails**
 
-Use the facilitator's captured evidence for the exact hash, if prepared. Otherwise
+Use the captured evidence in `docs/evidence/` for the exact hash. Otherwise
 inspect the binary with `file`, `strings`, `nm` and `objdump -d` (`otool -tvV` on
 macOS is another option). Save the assembly and connect a small part to behavior.
 This supports the binary lesson but does not complete the planned REA segment.
@@ -550,7 +553,7 @@ All five are the target; the unresolved question is a useful outcome, not a pena
 The repository is the working plan. Edit `docs/WORKSHOP.md`, rebuild the PDF with
 `scripts/build-pdf.py`, and visually review the rendered pages before sharing.
 `docs/PREPARATION.md` tracks rehearsal work. `docs/VERIFICATION.md` distinguishes
-executed checks from the planned native tool session.
+executed native checks from the still-pending learner rehearsal.
 
 **Primary references / checked 15 October 2026**
 
@@ -587,6 +590,61 @@ behavior; it does not need to appear in every small program.
 
 **Before announcing the event**
 
-Complete the native provider rehearsal, choose the date and venue, and distribute
-the setup instructions. Keep the generated binaries matched to each participant's
-platform and retain their hashes with all saved evidence.
+Repeat the verified native route on the event machine, run a session with one
+learner, choose the date and venue, and distribute setup instructions. Keep
+binaries matched to each participant's platform and retain their hashes.
+
+<!-- page -->
+
+# 12 / The recorded rehearsal
+## Actual results, with an honest boundary
+
+REA 6.5.0 and Ghidra 12.1.4 successfully analyzed both workshop binaries on
+macOS ARM64. Warmup import took 18.4 seconds; challenge import took 14.5 seconds.
+Each recorded native CLI operation, including import and cleanup, took 14.5-18.5
+seconds. These timings describe this machine and run, not a performance guarantee.
+
+**Warmup / follow one direct call**
+
+The loop implementation is at `0x100005bd4`. Its caller, `solve` at `0x1000028b0`,
+contains a direct call to that concrete implementation. The hash implementation
+at `0x100005d84` shows `get` before `entry` and `or_insert`. This gives the trait
+lesson a concrete compiled counterpart without requiring a vtable.
+
+**Challenge / trace from a string**
+
+The `usage:` search returned `0x10003b370`. Its references led to the CLI function
+at `0x100000e20`, which selects the loop at `0x1000015a8` or hash routine at
+`0x10000160c`. The optimized loop keeps the comparison below; the hash routine
+expands into much more code. Teach the loop first.
+
+```c
+// Actual Ghidra excerpt; line wrapping adjusted.
+if ((long)*(int *)(param_3 + lVar3 * 4) +
+    (long)*(int *)(param_3 + lVar4 * 4)
+    == (long)param_5) {
+  param_1[1] = lVar4;
+  param_1[2] = lVar3;
+  lVar3 = 1;
+  goto LAB_100001604;
+}
+```
+
+That branch follows the sum comparison and stores the two positions. Full output,
+instructions, annotated images and binary hashes are in
+[the evidence folder](https://github.com/superposition/rust-tuesday/tree/main/docs/evidence).
+These addresses apply only to the recorded hashes; rediscover them after rebuilding.
+
+**What the rehearsal established**
+
+The provider works on these artifacts. The relevant logic and call path can be
+retrieved. An alternate CLI using loops for both modes passed all 225 comparison
+cases. Its source is in `reconstruction/main.rs` for the facilitator's reveal.
+
+**What it did not establish**
+
+The author had already seen the reference source, so this was not an independent
+blind solve. The replacement hash mode does not preserve the original performance.
+Ghidra warns about the Rust calling convention and CLI type propagation. The
+stripped Mac binary still exposes algorithm names through its export trie. A live
+learner rehearsal and checks on other platforms remain.

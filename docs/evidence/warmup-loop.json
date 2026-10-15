@@ -1,0 +1,465 @@
+{
+  "review_copy": true,
+  "source_capture_sha256": "67e6234ffdd6c6932f210822960e37589729151490d4b1f34b9d4587d5c9df5c",
+  "transform": "Selected dossier facets; local paths and home-derived labels redacted. Not a canonical REA import bundle.",
+  "rea_output": {
+    "evidence_id": "ev_81c4482a1f1f4f26d9b9025e2499527880bd2d001e32cf92eb1e54bb1aca8202",
+    "subject": {
+      "name": "pair-finder",
+      "digest": {
+        "sha256": "d7ede7290fc4c35a69aab4f3945cae43e8c51a20e0e1d6dc4e33ca9bdb2e1297"
+      },
+      "local_path": "<WORKSHOP>/artifacts/warmup/pair-finder",
+      "format": "mach-o",
+      "architecture": "arm64"
+    },
+    "provider": {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "version": "12.1.4"
+    },
+    "analysis_profile": {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "target_kind": "executable",
+        "target_format": "mach-o",
+        "architecture": "arm64",
+        "available_architectures": [
+          "arm64"
+        ],
+        "import_mode": "ephemeral-source-immutable",
+        "annotation_policy": "atomic-function-entry-metadata-v1",
+        "load_image_observations": "source-mappings-entry-context-v2",
+        "function_body_evidence": "complete-inclusive-ranges-v1",
+        "function_references": "complete-body-and-entry-reference-manager-v2",
+        "call_relationship_coverage": "function-body-call-coverage-v5",
+        "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+        "string_inventory_evidence": "defined-data-coverage-v1",
+        "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+        "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+        "instruction_flow_evidence": "decoded-return-pcode-v1",
+        "instruction_references": "exact-address-incoming-v1",
+        "function_boundary_observations": "ghidra-function-boundary-limitations-v3",
+        "no_return_repair": "returning-imports-decoded-return-v2",
+        "process_launch": "inspected-jvm-launch-support-v1",
+        "jump_table_evidence": "typed-case-default-blocks-v1",
+        "decompiler_jump_loads": true,
+        "loader": "auto-from-header",
+        "language_id": "auto-from-header",
+        "compiler_spec_id": "auto-default",
+        "analyzer_preset": "ghidra-default"
+      },
+      "digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+    },
+    "operation": "analyze_function",
+    "parameters": {
+      "procedure": "0x100005bd4"
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "limitations": [
+      "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+      "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+      "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+      "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+      "References cover the complete Ghidra function-body AddressSet and exact entry. Dossier incoming edges omit sources owned by that function; procedure_references also retains those internal edges.",
+      "The dossier combines Ghidra FunctionManager, Listing, ReferenceManager, BasicBlockModel, and decompiler observations; provider-specific pseudocode and assembly are not cross-provider text invariants.",
+      "Resolved reference metadata identifies computed, indirect, external, call, jump, and data edges; unresolved targetless flows remain unknown, and function classifications distinguish thunks and externals.",
+      "Synthetic Ghidra entry-point references without actionable memory sources are omitted.",
+      "The Java bridge serializes one function request per Program and lets each decompilation run until it completes or the caller cancels.",
+      "Ghidra Listing reports a terminal call at 0x100005cec to 0x100041f04 core::panicking::panic_bounds_check (external=false, thunk=false, hasNoReturn=true); fallthrough is excluded by Ghidra's flow model. This records Ghidra's FunctionManager flag, not an independent verification that the callee cannot return.",
+      "Ghidra Listing reports a terminal call at 0x100005d2c to 0x100041f04 core::panicking::panic_bounds_check (external=false, thunk=false, hasNoReturn=true); fallthrough is excluded by Ghidra's flow model. This records Ghidra's FunctionManager flag, not an independent verification that the callee cannot return.",
+      "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state."
+    ],
+    "normalized_result": {
+      "procedure": {
+        "address": "0x100005bd4",
+        "name": "<rust_tuesday::BruteForce_as_rust_tuesday::PairSearch>::find",
+        "classification": {
+          "external": false,
+          "thunk": false,
+          "thunk_target": null,
+          "provenance": "ghidra-function-manager"
+        },
+        "body": {
+          "available": true,
+          "provenance": "ghidra-function-body-address-set",
+          "ranges": [
+            {
+              "start": "0x100005bd4",
+              "end": "0x100005d83"
+            }
+          ],
+          "total_bytes": 432,
+          "span_bytes": 432,
+          "non_contiguous": false,
+          "contains_entry": true
+        },
+        "signature": "undefined __rustcall find()",
+        "locals": [
+          {
+            "description": "undefined8 local_10 @ Stack[-0x10]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined4 local_14 @ Stack[-0x14]:4",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined4 local_18 @ Stack[-0x18]:4",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined4 local_1c @ Stack[-0x1c]:4",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_28 @ Stack[-0x28]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_30 @ Stack[-0x30]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined4 local_34 @ Stack[-0x34]:4",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_40 @ Stack[-0x40]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_48 @ Stack[-0x48]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_50 @ Stack[-0x50]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_58 @ Stack[-0x58]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_60 @ Stack[-0x60]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_68 @ Stack[-0x68]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_70 @ Stack[-0x70]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_78 @ Stack[-0x78]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_80 @ Stack[-0x80]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_88 @ Stack[-0x88]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_90 @ Stack[-0x90]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined4 local_94 @ Stack[-0x94]:4",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_a0 @ Stack[-0xa0]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_a8 @ Stack[-0xa8]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_b0 @ Stack[-0xb0]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_b8 @ Stack[-0xb8]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_c0 @ Stack[-0xc0]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_c8 @ Stack[-0xc8]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_d0 @ Stack[-0xd0]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_d8 @ Stack[-0xd8]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_e0 @ Stack[-0xe0]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_e8 @ Stack[-0xe8]:8",
+            "provenance": "ghidra-function-database"
+          },
+          {
+            "description": "undefined8 local_f0 @ Stack[-0xf0]:8",
+            "provenance": "ghidra-function-database"
+          }
+        ]
+      },
+      "pseudocode": "\n/* WARNING: Unknown calling convention: __rustcall */\n/* <rust_tuesday::BruteForce as rust_tuesday::PairSearch>::find */\n\nvoid __rustcall\n<rust_tuesday::BruteForce_as_rust_tuesday::PairSearch>::find\n          (undefined8 *param_1,undefined8 param_2,long param_3,ulong param_4,int param_5)\n\n{\n  ulong uVar2;\n  undefined1 auVar3 [16];\n  ulong local_f0;\n  ulong local_e8;\n  undefined1 local_90 [16];\n  undefined1 local_80 [16];\n  undefined1 local_70 [16];\n  undefined1 local_60 [16];\n  undefined8 local_50;\n  long local_48;\n  ulong local_40;\n  int local_34;\n  ulong local_30;\n  ulong local_28;\n  int local_1c;\n  int local_18;\n  int local_14;\n  ulong uVar1;\n  \n  local_50 = param_2;\n  local_48 = param_3;\n  local_40 = param_4;\n  local_34 = param_5;\n  local_90 = <I_as_core::iter::traits::collect::IntoIterator>::into_iter(0);\n  auVar3._8_8_ = local_60._8_8_;\n  auVar3._0_8_ = local_60._0_8_;\n  do {\n    local_60 = auVar3;\n    auVar3 = core::iter::range::\n             <impl_core::iter::traits::iterator::Iterator_for_core::ops::range::Range<A>>::next\n                       (local_90);\n    uVar1 = auVar3._8_8_;\n    if ((auVar3._0_8_ & 1) == 0) {\n      *param_1 = 0;\n      return;\n    }\n    local_30 = uVar1;\n    local_80 = auVar3;\n    auVar3 = <I_as_core::iter::traits::collect::IntoIterator>::into_iter(0);\n    local_70 = auVar3;\n    auVar3 = local_60;\n    while( true ) {\n      local_60 = auVar3;\n      auVar3 = core::iter::range::\n               <impl_core::iter::traits::iterator::Iterator_for_core::ops::range::Range<A>>::next\n                         (local_70);\n      uVar2 = auVar3._8_8_;\n      if ((auVar3._0_8_ & 1) == 0) break;\n      local_28 = uVar2;\n      local_60 = auVar3;\n      if (param_4 <= uVar2) {\n                    /* WARNING: Subroutine does not return */\n        core::panicking::panic_bounds_check(uVar2,param_4,&PTR_s_src_lib_rs_100058370);\n      }\n      local_14 = *(int *)(param_3 + uVar2 * 4);\n      if (param_4 <= uVar1) {\n                    /* WARNING: Subroutine does not return */\n        core::panicking::panic_bounds_check(uVar1,param_4,&PTR_s_src_lib_rs_100058388);\n      }\n      local_18 = *(int *)(param_3 + uVar1 * 4);\n      if (SCARRY8((long)local_14,(long)local_18)) {\n        core::panicking::panic_const::panic_const_add_overflow(&PTR_s_src_lib_rs_1000583a0);\n        goto LAB_100005d64;\n      }\n      local_f0 = uVar1;\n      local_e8 = uVar2;\n      local_1c = param_5;\n      if ((long)local_14 + (long)local_18 == (long)param_5) {\nLAB_100005d64:\n        param_1[1] = local_e8;\n        param_1[2] = local_f0;\n        *param_1 = 1;\n        return;\n      }\n    }\n  } while( true );\n}\n\n",
+      "assembly": [
+        "0x100005bd4: sub sp, sp, #0xf0",
+        "0x100005bd8: stp x29, x30, [sp, #0xe0]",
+        "0x100005bdc: add x29, sp, #0xe0",
+        "0x100005be0: str x8, [sp, #0x40]",
+        "0x100005be4: mov x8, x1",
+        "0x100005be8: str x8, [sp, #0x48]",
+        "0x100005bec: mov x1, x2",
+        "0x100005bf0: str x1, [sp, #0x50]",
+        "0x100005bf4: str w3, [sp, #0x5c]",
+        "0x100005bf8: stur x0, [x29, #-0x40]",
+        "0x100005bfc: stur x8, [x29, #-0x38]",
+        "0x100005c00: stur x1, [x29, #-0x30]",
+        "0x100005c04: stur w3, [x29, #-0x24]",
+        "0x100005c08: mov x0, #0x0",
+        "0x100005c0c: bl 0x1000082cc",
+        "0x100005c10: str x0, [sp, #0x60]",
+        "0x100005c14: str x1, [sp, #0x68]",
+        "0x100005c18: b 0x100005c20",
+        "0x100005c1c: b 0x100005c20",
+        "0x100005c20: add x0, sp, #0x60",
+        "0x100005c24: bl 0x1000082a8",
+        "0x100005c28: str x0, [sp, #0x70]",
+        "0x100005c2c: str x1, [sp, #0x78]",
+        "0x100005c30: ldr x8, [sp, #0x70]",
+        "0x100005c34: tbz w8, #0x0, 0x100005c5c",
+        "0x100005c38: b 0x100005c3c",
+        "0x100005c3c: ldr x1, [sp, #0x78]",
+        "0x100005c40: str x1, [sp, #0x38]",
+        "0x100005c44: stur x1, [x29, #-0x20]",
+        "0x100005c48: mov x0, #0x0",
+        "0x100005c4c: bl 0x1000082cc",
+        "0x100005c50: stur x0, [x29, #-0x60]",
+        "0x100005c54: stur x1, [x29, #-0x58]",
+        "0x100005c58: b 0x100005c74",
+        "0x100005c5c: ldr x8, [sp, #0x40]",
+        "0x100005c60: str xzr, [x8]",
+        "0x100005c64: b 0x100005c68",
+        "0x100005c68: ldp x29, x30, [sp, #0xe0]",
+        "0x100005c6c: add sp, sp, #0xf0",
+        "0x100005c70: ret",
+        "0x100005c74: sub x0, x29, #0x60",
+        "0x100005c78: bl 0x1000082a8",
+        "0x100005c7c: stur x0, [x29, #-0x50]",
+        "0x100005c80: stur x1, [x29, #-0x48]",
+        "0x100005c84: ldur x8, [x29, #-0x50]",
+        "0x100005c88: tbz w8, #0x0, 0x100005c1c",
+        "0x100005c8c: b 0x100005c90",
+        "0x100005c90: ldr x9, [sp, #0x50]",
+        "0x100005c94: ldur x8, [x29, #-0x48]",
+        "0x100005c98: str x8, [sp, #0x28]",
+        "0x100005c9c: stur x8, [x29, #-0x18]",
+        "0x100005ca0: subs x9, x8, x9",
+        "0x100005ca4: str x8, [sp, #0x30]",
+        "0x100005ca8: b.cs 0x100005cdc",
+        "0x100005cac: b 0x100005cb0",
+        "0x100005cb0: ldr x8, [sp, #0x38]",
+        "0x100005cb4: ldr x9, [sp, #0x50]",
+        "0x100005cb8: ldr x10, [sp, #0x48]",
+        "0x100005cbc: ldr x11, [sp, #0x28]",
+        "0x100005cc0: ldrsw x10, [x10, x11, LSL #0x2]",
+        "0x100005cc4: str x10, [sp, #0x18]",
+        "0x100005cc8: stur w10, [x29, #-0x4]",
+        "0x100005ccc: subs x9, x8, x9",
+        "0x100005cd0: str x8, [sp, #0x20]",
+        "0x100005cd4: b.cc 0x100005cf0",
+        "0x100005cd8: b 0x100005d1c",
+        "0x100005cdc: ldr x1, [sp, #0x50]",
+        "0x100005ce0: ldr x0, [sp, #0x30]",
+        "0x100005ce4: adrp x2, 0x100058000",
+        "0x100005ce8: add x2, x2, #0x370",
+        "0x100005cec: bl 0x100041f04",
+        "0x100005cf0: ldr x8, [sp, #0x18]",
+        "0x100005cf4: ldr x9, [sp, #0x48]",
+        "0x100005cf8: ldr x10, [sp, #0x38]",
+        "0x100005cfc: ldrsw x9, [x9, x10, LSL #0x2]",
+        "0x100005d00: mov x10, x9",
+        "0x100005d04: stur w10, [x29, #-0x8]",
+        "0x100005d08: adds x8, x8, x9",
+        "0x100005d0c: str x8, [sp, #0x10]",
+        "0x100005d10: cset w8, vs",
+        "0x100005d14: tbnz w8, #0x0, 0x100005d58",
+        "0x100005d18: b 0x100005d30",
+        "0x100005d1c: ldr x1, [sp, #0x50]",
+        "0x100005d20: ldr x0, [sp, #0x20]",
+        "0x100005d24: adrp x2, 0x100058000",
+        "0x100005d28: add x2, x2, #0x388",
+        "0x100005d2c: bl 0x100041f04",
+        "0x100005d30: ldr x8, [sp, #0x28]",
+        "0x100005d34: ldr x9, [sp, #0x38]",
+        "0x100005d38: ldr x10, [sp, #0x10]",
+        "0x100005d3c: ldr w11, [sp, #0x5c]",
+        "0x100005d40: stur w11, [x29, #-0xc]",
+        "0x100005d44: subs x10, x10, w11, SXTW ",
+        "0x100005d48: str x9, [sp]",
+        "0x100005d4c: str x8, [sp, #0x8]",
+        "0x100005d50: b.eq 0x100005d64",
+        "0x100005d54: b 0x100005c74",
+        "0x100005d58: adrp x0, 0x100058000",
+        "0x100005d5c: add x0, x0, #0x3a0",
+        "0x100005d60: bl 0x1000421fc",
+        "0x100005d64: ldr x9, [sp, #0x40]",
+        "0x100005d68: ldr x8, [sp]",
+        "0x100005d6c: ldr x10, [sp, #0x8]",
+        "0x100005d70: str x10, [x9, #0x8]",
+        "0x100005d74: str x8, [x9, #0x10]",
+        "0x100005d78: mov w8, #0x1",
+        "0x100005d7c: str x8, [x9]",
+        "0x100005d80: b 0x100005c68"
+      ],
+      "callers": [
+        {
+          "address": "0x1000028b0",
+          "name": "rust_tuesday::solve",
+          "classification": {
+            "external": false,
+            "thunk": false,
+            "thunk_target": null,
+            "provenance": "ghidra-function-manager"
+          }
+        }
+      ],
+      "callees": [
+        {
+          "address": "0x1000082a8",
+          "name": "core::iter::range::<impl_core::iter::traits::iterator::Iterator_for_core::ops::range::Range<A>>::next",
+          "classification": {
+            "external": false,
+            "thunk": false,
+            "thunk_target": null,
+            "provenance": "ghidra-function-manager"
+          }
+        },
+        {
+          "address": "0x1000082cc",
+          "name": "<I_as_core::iter::traits::collect::IntoIterator>::into_iter",
+          "classification": {
+            "external": false,
+            "thunk": false,
+            "thunk_target": null,
+            "provenance": "ghidra-function-manager"
+          }
+        },
+        {
+          "address": "0x100041f04",
+          "name": "core::panicking::panic_bounds_check",
+          "classification": {
+            "external": false,
+            "thunk": false,
+            "thunk_target": null,
+            "provenance": "ghidra-function-manager"
+          }
+        },
+        {
+          "address": "0x1000421fc",
+          "name": "core::panicking::panic_const::panic_const_add_overflow",
+          "classification": {
+            "external": false,
+            "thunk": false,
+            "thunk_target": null,
+            "provenance": "ghidra-function-manager"
+          }
+        }
+      ],
+      "incoming_references": [
+        {
+          "source_address": "0x1000028d4",
+          "target_address": "0x100005bd4",
+          "source_procedure": {
+            "address": "0x1000028b0",
+            "name": "rust_tuesday::solve",
+            "classification": {
+              "external": false,
+              "thunk": false,
+              "thunk_target": null,
+              "provenance": "ghidra-function-manager"
+            },
+            "body": {
+              "available": true,
+              "provenance": "ghidra-function-body-address-set",
+              "ranges": [
+                {
+                  "start": "0x1000028b0",
+                  "end": "0x1000028e3"
+                }
+              ],
+              "total_bytes": 52,
+              "span_bytes": 52,
+              "non_contiguous": false,
+              "contains_entry": true
+            }
+          },
+          "target_procedure": {
+            "address": "0x100005bd4",
+            "name": "<rust_tuesday::BruteForce_as_rust_tuesday::PairSearch>::find",
+            "classification": {
+              "external": false,
+              "thunk": false,
+              "thunk_target": null,
+              "provenance": "ghidra-function-manager"
+            },
+            "body": {
+              "available": true,
+              "provenance": "ghidra-function-body-address-set",
+              "ranges": [
+                {
+                  "start": "0x100005bd4",
+                  "end": "0x100005d83"
+                }
+              ],
+              "total_bytes": 432,
+              "span_bytes": 432,
+              "non_contiguous": false,
+              "contains_entry": true
+            }
+          },
+          "kind": {
+            "available": true,
+            "provenance": "ghidra-reference-manager",
+            "type": "UNCONDITIONAL_CALL",
+            "flow": true,
+            "call": true,
+            "jump": false,
+            "data": false,
+            "read": false,
+            "write": false,
+            "indirect": false,
+            "computed": false,
+            "conditional": false,
+            "terminal": false,
+            "primary": true,
+            "operand_index": 0,
+            "external": false
+          }
+        }
+      ]
+    }
+  }
+}

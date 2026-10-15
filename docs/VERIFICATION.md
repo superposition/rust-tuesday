@@ -1,7 +1,8 @@
 # Verification record
 
 Checked 15 October 2026 on macOS arm64 with Rust/Cargo 1.90.0.
-These are authoring checks, not a completed event rehearsal.
+Includes authoring checks and the completed native technical rehearsal.
+This is not a completed live teaching rehearsal.
 
 ## Executed successfully
 
@@ -33,20 +34,44 @@ Build outputs are intentionally untracked and can be regenerated. Debug paths,
 toolchains and host details can change the resulting bytes; these hashes identify
 this run, not a promise of reproducible bytes on another machine.
 
-## Not yet executed
+## Native rehearsal: executed
 
-- REA native analysis, decompilation, references, or a binary-only reconstruction.
-- Live end-to-end teaching rehearsal or checks on Linux/Windows/Intel macOS.
+- Reused installed Node 24.12.0 and JDK 21.0.9 through local symlinks. Installed
+  REA 6.5.0 and Ghidra 12.1.4 under ignored `.tools/`. No default shell runtime or
+  agent MCP registration was changed.
+- Downloaded Ghidra from the official GitHub release and verified SHA-256
+  `ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db`.
+- The initial scoped doctor correctly failed for the missing macOS ARM64 native
+  decompiler. Built it with `make -j8 ghidra_opt ARCH_TYPE='-arch arm64' OSDIR=mac_arm_64`
+  and Apple clang 21; the repeated scoped doctor passed all required checks.
+- Native imports, procedure/string searches, function dossiers, decompilations
+  and xrefs succeeded. Relevant warmup functions: loop `0x100005bd4`, hash
+  `0x100005d84`, direct caller `0x1000028b0`. Challenge usage-string references
+  led to CLI function `0x100000e20` and loop/hash functions `0x1000015a8`/`0x10000160c`.
+- Warmup import took 18.434 seconds and challenge import 14.524 seconds. Individual
+  native commands took 14.5-18.5 seconds including startup, query and cleanup.
+- Captured 23 runtime probes. Compiled the alternate `reconstruction/main.rs`
+  implementation and compared it with the stripped original: **225/225 cases agreed**.
+- Created and visually inspected three annotated pseudocode images. Updated and
+  rendered the 13-page guide with actual results and remaining limitations.
+
+[Evidence walkthrough](evidence/README.md) includes review copies of provider output,
+binary hashes, pseudocode, instructions, command receipts and comparison results.
+The author had already seen the reference source: this is an evidence-guided
+rehearsal, not an independent blind reconstruction. Both modes in the replacement
+use loops, so it does not preserve the hash implementation's performance.
+
+The stripped challenge retains algorithm name fragments inside its Mach-O export
+trie. This was verified from file offsets and Ghidra's recovered names. It is not
+an anonymous challenge. Ghidra also reported Rust calling-convention and CLI type
+propagation warnings; decompiler types are not treated as original Rust types.
+
+## Still requires a human or another environment
+
+- A timed teaching rehearsal with a learner, independent blind solve, date and venue.
+- Checks on Linux, native Windows or Intel macOS.
 - Rust 1.74 specifically; it is the declared minimum, while 1.90.0 was exercised.
+- MCP registration if the event uses an agent integration instead of the verified CLI.
 
-The checked machine had Node 22.14.0, below REA 6.5.0's supported baseline.
-`rea` was not on PATH; no Ghidra/Hopper installation was found in the checked
-PATH and Applications locations. No global tool or agent configuration was changed.
-
-REA commands were checked against its official documentation. npm reported 6.5.0
-as the published version, with Node engine constraint
-`^22.19.0 || ^24.11.0 || >=26.0.0`. The documentation snapshot is linked in the guide.
-
-Before the event, follow `docs/PREPARATION.md`: prepare the provider, retrieve a
-relevant function from these binaries, save actual evidence with hashes, and time
-the investigation. A planned command is not a successful analysis result.
+Before the event, repeat the native route on the event machine and rehearse the
+human teaching sequence in `docs/PREPARATION.md`.

@@ -37,6 +37,11 @@ Write an original problem brief rather than reproducing a platform's statement.
 
 Owner: facilitator. Reserve 45-60 minutes, at least one day before the event.
 
+Technical status: steps 1-4 completed on macOS ARM64, with command timings and
+three annotated images saved in [docs/evidence](evidence/README.md). A compatible
+reconstruction passed 225 comparisons. The author knew the source; a blind learner
+solve and the live facilitation timing in steps 5-6 still need rehearsal.
+
 1. Choose the actual host/CPU and install a REA-compatible Node runtime plus the
    chosen native provider. Record exact REA, Ghidra/Hopper, JDK and OS versions.
 2. Run the scoped provider doctor, package both binaries, and inspect the warmup.
@@ -64,8 +69,8 @@ what actually fit in 120 minutes before scheduling a second session.
 
 - Coding behind at minute 45: explain the completed second implementation and let
   pairs write the trait delegation; preserve the binary segment.
-- Native provider unavailable: use the rehearsed instructor machine or saved real
-  evidence. Neither is bundled yet. If those are also unavailable, demonstrate the
+- Native provider unavailable: use the prepared instructor machine or saved real
+  evidence in `docs/evidence/`. If those are also unavailable, demonstrate the
   local `file`/`strings`/`nm`/`objdump` route and explicitly defer the REA exercise.
 - Import slow: switch to already captured evidence for the exact binary hash.
 - Assembly unfamiliar: start with an input/output trace, then one comparison and
@@ -77,5 +82,5 @@ what actually fit in 120 minutes before scheduling a second session.
 Reference tests pass; learner scaffold compiles and fails for the expected TODOs;
 both binaries satisfy the CLI contract; reconstructed CLI agrees on supplied and
 generated cases; every binary conclusion cites an observation; rendered PDF has no
-clipping; repo clone commands work. The REA-specific gate remains separate until
-a real provider session has been captured.
+clipping; repo clone commands work. The REA-specific technical gate now has real
+provider captures; facilitator timing and the learner experience remain separate.

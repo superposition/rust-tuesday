@@ -1,0 +1,180 @@
+[
+  {
+    "capture": "warmup-overview",
+    "started_at": "2026-10-15T05:50:55.635328+00:00",
+    "elapsed_seconds": 18.434,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "analyze",
+      "<WORKSHOP>/artifacts/warmup/pair-finder",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "warmup-find",
+    "started_at": "2026-10-15T05:51:17.608101+00:00",
+    "elapsed_seconds": 16.337,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "search",
+      "<WORKSHOP>/artifacts/warmup/pair-finder",
+      "find",
+      "--kind",
+      "procedures",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "warmup-loop",
+    "started_at": "2026-10-15T05:51:39.298245+00:00",
+    "elapsed_seconds": 17.311,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "function",
+      "<WORKSHOP>/artifacts/warmup/pair-finder",
+      "0x100005bd4",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "warmup-hash",
+    "started_at": "2026-10-15T05:51:39.295992+00:00",
+    "elapsed_seconds": 17.038,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "decompile",
+      "<WORKSHOP>/artifacts/warmup/pair-finder",
+      "0x100005d84",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "warmup-caller",
+    "started_at": "2026-10-15T05:52:18.045546+00:00",
+    "elapsed_seconds": 15.734,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "decompile",
+      "<WORKSHOP>/artifacts/warmup/pair-finder",
+      "0x1000028b0",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "challenge-overview",
+    "started_at": "2026-10-15T05:51:17.607051+00:00",
+    "elapsed_seconds": 14.524,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "analyze",
+      "<WORKSHOP>/artifacts/challenge/pair-finder",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "challenge-usage",
+    "started_at": "2026-10-15T05:51:39.298073+00:00",
+    "elapsed_seconds": 15.676,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "search",
+      "<WORKSHOP>/artifacts/challenge/pair-finder",
+      "usage:",
+      "--kind",
+      "strings",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "challenge-usage-xrefs",
+    "started_at": "2026-10-15T05:52:18.044880+00:00",
+    "elapsed_seconds": 14.74,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "xrefs",
+      "<WORKSHOP>/artifacts/challenge/pair-finder",
+      "0x10003b370",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "challenge-main",
+    "started_at": "2026-10-15T05:52:36.281300+00:00",
+    "elapsed_seconds": 15.074,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "function",
+      "<WORKSHOP>/artifacts/challenge/pair-finder",
+      "0x100000eb0",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "challenge-loop",
+    "started_at": "2026-10-15T05:53:14.006604+00:00",
+    "elapsed_seconds": 15.315,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "decompile",
+      "<WORKSHOP>/artifacts/challenge/pair-finder",
+      "0x1000015a8",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  },
+  {
+    "capture": "challenge-hash",
+    "started_at": "2026-10-15T05:53:14.008931+00:00",
+    "elapsed_seconds": 15.275,
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "<WORKSHOP>/scripts/rea.sh",
+      "decompile",
+      "<WORKSHOP>/artifacts/challenge/pair-finder",
+      "0x10000160c",
+      "--provider",
+      "ghidra",
+      "--json"
+    ]
+  }
+]

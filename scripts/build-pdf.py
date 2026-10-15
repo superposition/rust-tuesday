@@ -146,7 +146,7 @@ def chrome(canvas, doc):
     canvas.line(48, 45, PAGE_W - 48, 45)
     canvas.setFillColor(MUTED)
     canvas.setFont("Helvetica", 8)
-    canvas.drawString(48, 30, "superposition/rust-tuesday  |  rehearsal draft")
+    canvas.drawString(48, 30, "superposition/rust-tuesday  |  native rehearsal verified")
     canvas.drawRightString(PAGE_W - 48, 30, f"{doc.page:02d} / {page_total:02d}")
     canvas.restoreState()
 

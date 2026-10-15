@@ -1,0 +1,253 @@
+{
+  "binary_sha256": "c13981d9bec980d21e1be9b8706eaf0ee5476b2697e23575a45c79f44f20adca",
+  "cases": [
+    {
+      "args": [
+        "a",
+        "9",
+        "2",
+        "7",
+        "11",
+        "15"
+      ],
+      "stdout": "0 1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "6",
+        "3",
+        "3"
+      ],
+      "stdout": "0 1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "6",
+        "3"
+      ],
+      "stdout": "none\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "0"
+      ],
+      "stdout": "none\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "0",
+        "-3",
+        "4",
+        "3",
+        "90"
+      ],
+      "stdout": "0 2\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "5",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "stdout": "1 2\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "5",
+        "1",
+        "1",
+        "4"
+      ],
+      "stdout": "0 2\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "-1",
+        "-2147483648",
+        "2147483647"
+      ],
+      "stdout": "0 1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "a",
+        "-2147483648",
+        "2147483647",
+        "1"
+      ],
+      "stdout": "none\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "9",
+        "2",
+        "7",
+        "11",
+        "15"
+      ],
+      "stdout": "0 1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "6",
+        "3",
+        "3"
+      ],
+      "stdout": "0 1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "6",
+        "3"
+      ],
+      "stdout": "none\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "0"
+      ],
+      "stdout": "none\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "0",
+        "-3",
+        "4",
+        "3",
+        "90"
+      ],
+      "stdout": "0 2\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "5",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "stdout": "1 2\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "5",
+        "1",
+        "1",
+        "4"
+      ],
+      "stdout": "0 2\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "-1",
+        "-2147483648",
+        "2147483647"
+      ],
+      "stdout": "0 1\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "b",
+        "-2147483648",
+        "2147483647",
+        "1"
+      ],
+      "stdout": "none\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "args": [],
+      "stdout": "",
+      "stderr": "usage: pair-finder <a|b> <target:i32> [numbers:i32 ...]\n",
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "c",
+        "9"
+      ],
+      "stdout": "",
+      "stderr": "usage: pair-finder <a|b> <target:i32> [numbers:i32 ...]\n",
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "a"
+      ],
+      "stdout": "",
+      "stderr": "usage: pair-finder <a|b> <target:i32> [numbers:i32 ...]\n",
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "b",
+        "9",
+        "x"
+      ],
+      "stdout": "",
+      "stderr": "invalid i32: x\n",
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "a",
+        "2147483648"
+      ],
+      "stdout": "",
+      "stderr": "invalid i32: 2147483648\n",
+      "exit_code": 2
+    }
+  ]
+}

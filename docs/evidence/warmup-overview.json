@@ -1,0 +1,272 @@
+{
+  "review_copy": true,
+  "source_capture_sha256": "03ffb8856adef3f698031586f5d4c388ae3094b3bd40bd6eef080c4e9cfb8e4e",
+  "transform": "Selected dossier facets; local paths and home-derived labels redacted. Not a canonical REA import bundle.",
+  "rea_output": {
+    "evidence_id": "ev_920fd2897b7707e507b128ad15e5f8d110d391d303860840c0df4d19f667f1b4",
+    "subject": {
+      "name": "pair-finder",
+      "digest": {
+        "sha256": "d7ede7290fc4c35a69aab4f3945cae43e8c51a20e0e1d6dc4e33ca9bdb2e1297"
+      },
+      "local_path": "<WORKSHOP>/artifacts/warmup/pair-finder",
+      "format": "mach-o",
+      "architecture": "arm64"
+    },
+    "provider": {
+      "id": "rea-workflow",
+      "name": "REA composed investigation workflow",
+      "version": "1"
+    },
+    "analysis_profile": {
+      "provider": {
+        "id": "rea-workflow",
+        "name": "REA composed investigation workflow",
+        "version": "1"
+      },
+      "parameters": {
+        "upstream_analysis_profile": {
+          "provider": {
+            "id": "ghidra",
+            "name": "Ghidra",
+            "version": "12.1.4"
+          },
+          "parameters": {
+            "target_kind": "executable",
+            "target_format": "mach-o",
+            "architecture": "arm64",
+            "available_architectures": [
+              "arm64"
+            ],
+            "import_mode": "ephemeral-source-immutable",
+            "annotation_policy": "atomic-function-entry-metadata-v1",
+            "load_image_observations": "source-mappings-entry-context-v2",
+            "function_body_evidence": "complete-inclusive-ranges-v1",
+            "function_references": "complete-body-and-entry-reference-manager-v2",
+            "call_relationship_coverage": "function-body-call-coverage-v5",
+            "function_dossier_coverage": "observed-facets-and-call-relationships-v1",
+            "string_inventory_evidence": "defined-data-coverage-v1",
+            "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+            "procedure_file_offset_resolution": "address-first-unique-target-source-mapping-v2",
+            "instruction_flow_evidence": "decoded-return-pcode-v1",
+            "instruction_references": "exact-address-incoming-v1",
+            "function_boundary_observations": "ghidra-function-boundary-limitations-v3",
+            "no_return_repair": "returning-imports-decoded-return-v2",
+            "process_launch": "inspected-jvm-launch-support-v1",
+            "jump_table_evidence": "typed-case-default-blocks-v1",
+            "decompiler_jump_loads": true,
+            "loader": "auto-from-header",
+            "language_id": "auto-from-header",
+            "compiler_spec_id": "auto-default",
+            "analyzer_preset": "ghidra-default"
+          },
+          "digest": "966e6016724421ad282356f583a9d5bf24577db4ac77a75c7099d236b88bcc28"
+        },
+        "workflow_revision": 3
+      },
+      "digest": "36e03fb12d9b7fb24826a311c442f39020ecdc72441154c33bf99b49256605a8"
+    },
+    "operation": "binary_overview",
+    "parameters": {},
+    "confidence": "derived",
+    "authority": "shipped-artifact",
+    "limitations": [
+      "Derived by an REA composed workflow.",
+      "A headless Ghidra session contains exactly one imported Program, unlike Hopper's multi-document GUI session.",
+      "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+      "Charset is reported, while a non-missing terminator cannot distinguish a present terminator from a fixed or Pascal layout.",
+      "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+      "External functions and local thunks are distinct; procedure metadata identifies both and preserves a thunk target when Ghidra resolves one.",
+      "Memory-block end addresses are exclusive; permissions come from Ghidra MemoryBlock flags rather than inference from section names.",
+      "Only Ghidra-defined string Data is observed; packed or undefined string bytes may be absent. Completeness applies to that inventory, and an empty search does not establish that text is absent from the artifact. If an address is known, use read_bytes and xrefs to inspect bytes and references.",
+      "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+      "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+      "macOS sessions require a matching executable Ghidra native decompiler; REA checks for it but does not build native components or change Gatekeeper quarantine state."
+    ],
+    "normalized_result": {
+      "document": "target-d7ede7290fc4.bin",
+      "image_base": "0x100000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "start": "0x100000000",
+          "end": "0x100000888",
+          "length": 2184,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__text",
+          "start": "0x100000888",
+          "end": "0x1000423bc",
+          "length": 269108,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__stubs",
+          "start": "0x1000423bc",
+          "end": "0x100042704",
+          "length": 840,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__stub_helper",
+          "start": "0x100042704",
+          "end": "0x100042a70",
+          "length": 876,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__const",
+          "start": "0x100042a70",
+          "end": "0x100046b18",
+          "length": 16552,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__cstring",
+          "start": "0x100046b18",
+          "end": "0x1000481c4",
+          "length": 5804,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__gcc_except_tab",
+          "start": "0x1000481c4",
+          "end": "0x1000499c8",
+          "length": 6148,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__unwind_info",
+          "start": "0x1000499c8",
+          "end": "0x10004b640",
+          "length": 7288,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__eh_frame",
+          "start": "0x10004b640",
+          "end": "0x100058000",
+          "length": 51648,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__got",
+          "start": "0x100058000",
+          "end": "0x100058010",
+          "length": 16,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__const",
+          "start": "0x100058010",
+          "end": "0x10005af30",
+          "length": 12064,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__DATA_CONST",
+          "start": "0x10005af30",
+          "end": "0x10005c000",
+          "length": 4304,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__la_symbol_ptr",
+          "start": "0x10005c000",
+          "end": "0x10005c230",
+          "length": 560,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__data",
+          "start": "0x10005c230",
+          "end": "0x10005cbf0",
+          "length": 2496,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__thread_vars",
+          "start": "0x10005cbf0",
+          "end": "0x10005cc98",
+          "length": 168,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__thread_data",
+          "start": "0x10005cc98",
+          "end": "0x10005ccb8",
+          "length": 32,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__DATA",
+          "start": "0x10005ccb8",
+          "end": "0x10005cd08",
+          "length": 80,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__common",
+          "start": "0x10005cd08",
+          "end": "0x10005cd50",
+          "length": 72,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__bss",
+          "start": "0x10005cd50",
+          "end": "0x100060000",
+          "length": 12976,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__LINKEDIT",
+          "start": "0x100060000",
+          "end": "0x100093ef0",
+          "length": 212720,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "__LINKEDIT",
+          "start": "0x100093ef0",
+          "end": "0x100094000",
+          "length": 272,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        },
+        {
+          "name": "EXTERNAL",
+          "start": "0x100094000",
+          "end": "0x100094200",
+          "length": 512,
+          "image_base": "0x100000000",
+          "address_space": "ram"
+        }
+      ],
+      "segment_count": 22,
+      "procedure_count": 1014,
+      "string_count": 2447
+    }
+  }
+}

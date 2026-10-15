@@ -8,8 +8,10 @@ A two-hour workshop: solve **Two Sum**, learn functions, borrowing, traits and
 
 The repository includes a complete facilitator reference, a learner scaffold,
 tests, binary packaging, an investigation brief, and a behavioral comparison tool.
-The native REA session still needs a rehearsal with a configured analysis engine;
-see [verification](docs/VERIFICATION.md). This is an independent community workshop.
+The native REA rehearsal now works with Ghidra on macOS ARM64; see the
+[captured evidence and annotated excerpts](docs/evidence/README.md) and
+[verification](docs/VERIFICATION.md). A live learner rehearsal remains.
+This is an independent community workshop.
 
 ## Run the reference
 
@@ -59,6 +61,31 @@ REA native setup and investigation commands are in [the workshop guide](docs/WOR
 Node and a native analysis provider are prerequisites; Rust metadata inspection alone
 does not decompile this program.
 
+## Repeat the native rehearsal
+
+On the prepared checkout (for a fresh clone, first follow [local tool setup](docs/LOCAL-TOOLS.md)):
+
+```sh
+bash scripts/rea.sh doctor --provider ghidra --json
+bash scripts/rea.sh analyze "$PWD/artifacts/warmup/pair-finder" --provider ghidra --json
+bash scripts/rea.sh search "$PWD/artifacts/warmup/pair-finder" find --kind procedures --provider ghidra --json
+```
+
+Select an observed address from the search and pass it to `function` or `decompile`.
+The [evidence walkthrough](docs/evidence/README.md) records the exact route and timings.
+The stripped Mac binary still retained algorithm names in its export trie: do not
+assume `strip` makes a program anonymous.
+
+To run the facilitator's alternate reconstruction:
+
+```sh
+rustc --edition 2021 -O reconstruction/main.rs -o artifacts/reconstructed-pair-finder
+python3 scripts/compare-binaries.py artifacts/challenge/pair-finder artifacts/reconstructed-pair-finder
+```
+
+All 225 cases agreed in the rehearsal. The author had seen the reference source;
+this demonstrates the workflow, not an independent blind reconstruction.
+
 ## Rebuild the PDF
 
 ```sh
@@ -87,6 +114,9 @@ pdftoppm -r 110 -png output/pdf/rust-tuesday-workshop.pdf tmp/pdfs/page
 | `tests/` | Algorithm and CLI contract checks |
 | `scripts/compare-binaries.py` | Compare original and reconstructed behavior |
 | `docs/VERIFICATION.md` | What was actually checked and what remains |
+| `docs/evidence/` | Native analysis captures, timings and annotated excerpts |
+| `docs/LOCAL-TOOLS.md` | Reproduce the local REA/Ghidra setup |
+| `reconstruction/` | Facilitator's alternate behavioral implementation |
 
 MIT for original workshop materials. Problem links and REA retain their own attribution
 and terms; this repo does not vendor their content or code.

@@ -1,0 +1,15 @@
+{
+  "binary_sha256": "c13981d9bec980d21e1be9b8706eaf0ee5476b2697e23575a45c79f44f20adca",
+  "load_command": "LC_DYLD_INFO_ONLY",
+  "export_file_range": [
+    329664,
+    348192
+  ],
+  "name_fragment_file_offsets": {
+    "BruteForce": 344651,
+    "HashLookup": 344729,
+    "rust_tuesday": 344673
+  },
+  "nm_line_count": 72,
+  "interpretation": "Name fragments survive inside the export trie, although local nlist symbols were stripped. Ghidra recovers the algorithm names."
+}

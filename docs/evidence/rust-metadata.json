@@ -1,0 +1,64 @@
+{
+  "review_copy": true,
+  "source_capture_sha256": "0593a67c9e5e86e452bc662aa94006db57fba13c05e70aeaff91188c5f62fa8a",
+  "transform": "Selected dossier facets; local paths and home-derived labels redacted. Not a canonical REA import bundle.",
+  "rea_output": {
+    "evidence_id": "ev_d4ef9ce292559fdf8bb94d6084d4ea668911d613c88209bac112dc3c321e9226",
+    "subject": {
+      "name": "pair-finder",
+      "digest": {
+        "sha256": "c13981d9bec980d21e1be9b8706eaf0ee5476b2697e23575a45c79f44f20adca"
+      },
+      "local_path": "<WORKSHOP>/artifacts/challenge/pair-finder",
+      "format": "mach-o",
+      "architecture": "arm64"
+    },
+    "provider": {
+      "id": "rust-auditable",
+      "name": "REA Rust dependency reader",
+      "version": "1"
+    },
+    "analysis_profile": null,
+    "operation": "inspect_rust_binary",
+    "parameters": {
+      "path": "<WORKSHOP>/artifacts/challenge/pair-finder"
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "limitations": [
+      "Embedded dependency metadata is file content. It does not authenticate package names, versions, sources, or the compiler that produced the binary.",
+      "Only the .dep-v0 dependency section and read-only compiler path strings are inspected. Functions, types, and runtime behavior are not recovered.",
+      "Resource guards bound the selected file to 256 MiB, a dependency section to 1 MiB, inflated JSON to the smaller of 8 MiB and 64 times the section size, and the complete report to 8 MiB. Package and dependency counts are admitted against that output budget before schema cloning, graph objects, or reverse-edge allocation.",
+      "No .dep-v0 section was found. Absence of .dep-v0 does not mean the binary has no dependencies.",
+      "The rustc commit hash is inferred from a /rustc/<40-hex>/ path in read-only data. It does not by itself prove which compiler produced the binary."
+    ],
+    "normalized_result": {
+      "artifact": {
+        "path": "<WORKSHOP>/artifacts/challenge/pair-finder",
+        "sha256": "c13981d9bec980d21e1be9b8706eaf0ee5476b2697e23575a45c79f44f20adca",
+        "bytes": 354896
+      },
+      "format": "macho",
+      "architecture": "arm64",
+      "bits": 64,
+      "byte_order": "little",
+      "auditable_metadata": null,
+      "rustc_commit": {
+        "evidence_kind": "inferred",
+        "hashes": [
+          {
+            "hash": "1159e78c4747b02ef996e55082b704c09b970588",
+            "file_offset": 239156
+          }
+        ]
+      },
+      "limitations": [
+        "Embedded dependency metadata is file content. It does not authenticate package names, versions, sources, or the compiler that produced the binary.",
+        "Only the .dep-v0 dependency section and read-only compiler path strings are inspected. Functions, types, and runtime behavior are not recovered.",
+        "Resource guards bound the selected file to 256 MiB, a dependency section to 1 MiB, inflated JSON to the smaller of 8 MiB and 64 times the section size, and the complete report to 8 MiB. Package and dependency counts are admitted against that output budget before schema cloning, graph objects, or reverse-edge allocation.",
+        "No .dep-v0 section was found. Absence of .dep-v0 does not mean the binary has no dependencies.",
+        "The rustc commit hash is inferred from a /rustc/<40-hex>/ path in read-only data. It does not by itself prove which compiler produced the binary."
+      ]
+    }
+  }
+}

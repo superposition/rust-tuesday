@@ -1,0 +1,19 @@
+{
+  "host": "aarch64-apple-darwin",
+  "rustc": "rustc 1.90.0 (1159e78c4 2025-09-14)\nbinary: rustc\ncommit-hash: 1159e78c4747b02ef996e55082b704c09b970588\ncommit-date: 2025-09-14\nhost: aarch64-apple-darwin\nrelease: 1.90.0\nLLVM version: 20.1.8\n",
+  "cargo": "cargo 1.90.0 (840b83a10 2025-07-30)",
+  "profiles": {
+    "warmup": "dev; opt=0; debug=2; strip=none",
+    "challenge": "release; opt=3; debug=0; strip=symbols"
+  },
+  "binaries": {
+    "warmup": {
+      "sha256": "d7ede7290fc4c35a69aab4f3945cae43e8c51a20e0e1d6dc4e33ca9bdb2e1297",
+      "bytes": 605936
+    },
+    "challenge": {
+      "sha256": "c13981d9bec980d21e1be9b8706eaf0ee5476b2697e23575a45c79f44f20adca",
+      "bytes": 354896
+    }
+  }
+}
