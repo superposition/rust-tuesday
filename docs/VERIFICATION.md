@@ -75,3 +75,16 @@ propagation warnings; decompiler types are not treated as original Rust types.
 
 Before the event, repeat the native route on the event machine and rehearse the
 human teaching sequence in `docs/PREPARATION.md`.
+
+## Visual walkthrough PDF
+
+Created `output/pdf/rust-tuesday-walkthrough.pdf` as a separate, 10-page visual
+record of the executed work. The builder reads source excerpts, binary sizes,
+probe outputs and export offsets from checked-in files. Text is selectable;
+diagrams and code are rendered as vectors.
+
+Generated with ReportLab, extracted with pypdf (10 pages), rendered with Poppler
+at 110 dpi, and visually reviewed on every page. Code blocks, diagram labels,
+tables, footers and page numbers were readable without clipping or overlap.
+This document uses the existing rehearsal captures; creating it did not repeat
+the native analysis or add a new platform or learner validation claim.
