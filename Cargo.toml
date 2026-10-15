@@ -1,0 +1,23 @@
+[package]
+name = "rust-tuesday"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+license = "MIT"
+description = "Two Sum, Rust traits, and a binary investigation for Rust Tuesday"
+
+[[bin]]
+name = "pair-finder"
+path = "src/main.rs"
+
+[profile.dev]
+opt-level = 0
+debug = 2
+strip = "none"
+split-debuginfo = "off"
+
+[profile.release]
+opt-level = 3
+debug = 0
+strip = "symbols"
+overflow-checks = true
